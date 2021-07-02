@@ -9,6 +9,18 @@ let acceptCgu = document.getElementById('checkbox1');
 let newsletter = document.getElementById('checkbox2');
 
 //live listenner 
+// false by default
+first.parentElement.setAttribute("data-error", "Il faut au moins deux caractères");
+first.parentElement.setAttribute("data-error-visible", true);
+last.parentElement.setAttribute("data-error", "Il faut au moins deux caractères");
+last.parentElement.setAttribute("data-error-visible", true);
+email.parentElement.setAttribute("data-error", "Merci d'entrer une adresse mail valide");
+email.parentElement.setAttribute("data-error-visible", true);
+quantity.parentElement.setAttribute("data-error", "Merci d'entrer un chiffre");
+quantity.parentElement.setAttribute("data-error-visible", true);
+acceptCgu.parentElement.setAttribute("data-error", "Merci de lire et d'accepter les CGU");
+acceptCgu.parentElement.setAttribute("data-error-visible", true);
+
 //first name
 first.addEventListener('input', function() {
     if(this.value.length > 1){
@@ -60,21 +72,27 @@ quantity.addEventListener('input', function(){
 //location
 locations.forEach(location => {
     let valid = false;
+    console.log(location.nextElementSibling.firstElementChild);
+    location.nextElementSibling.firstElementChild.setAttribute("data-error-visible", true);
     location.parentElement.setAttribute("data-error", "Merci de selectionné une ville");
     location.parentElement.setAttribute("data-error-visible", true);
-    location.addEventListener('input', function() {
+    location.addEventListener('change', function() {
         console.log(this.value);
-        if(this.value != null){
+        if(this.checked){
             valid = true;
             location.parentElement.removeAttribute("data-error");
             location.parentElement.removeAttribute("data-error-visible");
+            location.nextElementSibling.firstElementChild.removeAttribute("data-error-visible");
             console.log(valid);
         }else{
-            valid = false;
             console.log(valid);
+            valid = false;
+            location.nextElementSibling.firstElementChild.setAttribute("data-error-visible", true);
         }
     })
 });
+
+//
 
 //Submit btn function
 function validate() {
