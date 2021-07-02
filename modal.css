@@ -200,6 +200,12 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
+/* .border-false{
+  border: 0.8px solid rgb(255, 72, 72);
+}
+.border-true{
+  border: 0.8px solid rgb(72, 255, 127);
+} */
 .text-control {
   margin: 0;
   padding: 8px;
