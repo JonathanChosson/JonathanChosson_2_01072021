@@ -70,29 +70,32 @@ quantity.addEventListener('input', function(){
 })
 
 //location
+let selectedLocation = [];
 locations.forEach(location => {
-    let valid = false;
-    console.log(location.nextElementSibling.firstElementChild);
     location.nextElementSibling.firstElementChild.setAttribute("data-error-visible", true);
     location.parentElement.setAttribute("data-error", "Merci de selectionné une ville");
     location.parentElement.setAttribute("data-error-visible", true);
     location.addEventListener('change', function() {
-        console.log(this.value);
         if(this.checked){
-            valid = true;
             location.parentElement.removeAttribute("data-error");
             location.parentElement.removeAttribute("data-error-visible");
             location.nextElementSibling.firstElementChild.removeAttribute("data-error-visible");
-            console.log(valid);
+            selectedLocation.push(this.value)
         }else{
-            console.log(valid);
-            valid = false;
             location.nextElementSibling.firstElementChild.setAttribute("data-error-visible", true);
+            selectedLocation.splice(selectedLocation.indexOf(this.value), 1);
+            verifChecked(location);
         }
     })
 });
 
-//
+function verifChecked(location) {
+    console.log(selectedLocation);
+    if(selectedLocation.length < 1){
+        location.parentElement.setAttribute("data-error", "Merci de selectionné une ville");
+        location.parentElement.setAttribute("data-error-visible", true);
+    }
+}
 
 //Submit btn function
 function validate() {
