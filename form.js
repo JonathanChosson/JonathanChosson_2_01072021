@@ -90,12 +90,22 @@ locations.forEach(location => {
 });
 
 function verifChecked(location) {
-    console.log(selectedLocation);
     if(selectedLocation.length < 1){
         location.parentElement.setAttribute("data-error", "Merci de selectionné une ville");
         location.parentElement.setAttribute("data-error-visible", true);
     }
-}
+};
+
+//CGU 
+acceptCgu.addEventListener('change', function(){
+    if(this.checked){
+        acceptCgu.parentElement.removeAttribute("data-error");
+        acceptCgu.parentElement.removeAttribute("data-error-visible");
+    }else{
+        acceptCgu.parentElement.setAttribute("data-error", "Merci de selectionné une ville");
+        acceptCgu.parentElement.setAttribute("data-error-visible", true);
+    }
+})
 
 //Submit btn function
 function validate() {
