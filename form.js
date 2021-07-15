@@ -120,18 +120,26 @@ btnSubmit[0].addEventListener('click', function(event){
     let formStatus = 0;
     if(selectedLocation.length > 0){
         formStatus ++;
+    }else{
+        locations[0].parentElement.classList.add('shake-horizontal')
     }
     //check completion of input
     for(input of arrayInput){
         if(input.hasAttribute('data-error')){
-            console.log('erreur');
+            input.classList.add('shake-horizontal');
+            setTimeout(function(){removeClass();}, 1000)
         }else{
             formStatus ++;
         }
 
-        console.log(formStatus);
         if(formStatus === 6){
             console.log('Champs complet');
         }
+    }
+    function removeClass (){
+        locations[0].parentElement.classList.remove('shake-horizontal')
+        for(input of arrayInput){
+        input.classList.remove('shake-horizontal');
+    }
     }
 })
