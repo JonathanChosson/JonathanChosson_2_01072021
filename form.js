@@ -7,8 +7,9 @@ let quantity = document.getElementById('quantity');
 let locations = document.getElementsByName('location');
 let acceptCgu = document.getElementById('checkbox1');
 let newsletter = document.getElementById('checkbox2');
+let btnSubmit = document.getElementsByClassName('btn-submit');
 
-//live listenner 
+//live listener 
 // false by default
 first.parentElement.setAttribute("data-error", "Il faut au moins deux caractères");
 first.parentElement.setAttribute("data-error-visible", true);
@@ -89,6 +90,8 @@ locations.forEach(location => {
     })
 });
 
+//jsdoc pour commenté les fonction entrée sortie généré une doc auto. 
+//verifie que [location] contiens au moins une entrée
 function verifChecked(location) {
     if(selectedLocation.length < 1){
         location.parentElement.setAttribute("data-error", "Merci de selectionné une ville");
@@ -108,6 +111,27 @@ acceptCgu.addEventListener('change', function(){
 })
 
 //Submit btn function
-function validate() {
-    console.log('test');
-}
+// create array of input have to be check
+let arrayInput = [first.parentElement, last.parentElement, email.parentElement, quantity.parentElement, acceptCgu.parentElement];
+
+//listen on click button Submit
+btnSubmit[0].addEventListener('click', function(event){
+    event.preventDefault();
+    let formStatus = 0;
+    if(selectedLocation.length > 0){
+        formStatus ++;
+    }
+    //check completion of input
+    for(input of arrayInput){
+        if(input.hasAttribute('data-error')){
+            console.log('erreur');
+        }else{
+            formStatus ++;
+        }
+
+        console.log(formStatus);
+        if(formStatus === 6){
+            console.log('Champs complet');
+        }
+    }
+})
