@@ -59,9 +59,9 @@ email.addEventListener('input', function() {
 });
 
 //quantity
-quantity.addEventListener('input', function(){
-    let entry = parseInt(this.value)
-    if(typeof(entry) === "number"){
+quantity.addEventListener('change', function(){
+    let entry = parseInt(this.value);
+    if(entry > 0){
         quantity.parentElement.removeAttribute("data-error");
         quantity.parentElement.removeAttribute("data-error-visible");
     }else{
