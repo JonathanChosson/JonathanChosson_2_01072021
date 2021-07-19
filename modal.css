@@ -456,6 +456,11 @@ input[data-error]::after {
   font-weight: normal;
   white-space: nowrap;
 }
+@media screen and (max-width: 950px) {
+  .hero-headline {
+    font-size: 4.5rem;
+  }
+}
 .hero-text {
   width: 146%;
   font-weight: normal;
