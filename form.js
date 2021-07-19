@@ -8,6 +8,7 @@ let locations = document.getElementsByName('location');
 let acceptCgu = document.getElementById('checkbox1');
 let newsletter = document.getElementById('checkbox2');
 let btnSubmit = document.getElementsByClassName('btn-submit');
+let modalBody = document.getElementsByClassName('modal-body');
 
 //live listener 
 // false by default
@@ -134,6 +135,23 @@ btnSubmit[0].addEventListener('click', function(event){
 
         if(formStatus === 6){
             console.log('Champs complet');
+            console.log(modalBody[0]);
+            modalBody[0].innerHTML = `
+            <p class="modalText">Merci de nous avoir transmis votre demande d'enregistrement</p>
+            <form
+                name="reserve"
+                action="index.html"
+                method="get"
+                onsubmit="return closeModal();"
+            >
+            <input
+                class="btn-submit"
+                type="submit"
+                class="button"
+                value="Fermer"
+            />
+            </form>
+            `;
         }
     }
     function removeClass (){

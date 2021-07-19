@@ -131,6 +131,13 @@ main {
   background: #3876ac;
 }
 
+.modalText{
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .footer {
   margin: 20px;
   padding: 10px;
