@@ -541,6 +541,7 @@ footer {
   .hero-text {
     width: unset;
     font-size: 13px;
+    margin-top: 20px;
   }
   .hero-img img {
     border-radius: 10px;
